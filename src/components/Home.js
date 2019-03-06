@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Container } from 'semantic-ui-react'
 
-let image = `https://images.unsplash.com/photo-1518065336951-d16c043900d6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60`;
+let image = `https://images.unsplash.com/photo-1527527753602-fb58e749276a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60`;
 
 const homeBg = {
   backgroundImage: `url(${image})`,
@@ -26,7 +26,7 @@ class Home extends Component {
                     <h1 style={{
                         fontSize: '80px', 
                         fontFamily: 'Covered By Your Grace, cursive',
-                        marginTop: '85px'
+                        marginTop: '20px'
                     }}
                         
                     >

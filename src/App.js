@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Home from './components/Home'
 import NavBar from './components/NavBar'
+import { Switch, Route } from 'react-router-dom'
+import GamesContainer from './components/GamesContainer'
 
 
 class App extends Component {
@@ -9,7 +11,10 @@ class App extends Component {
       
       <div style={{ fontFamily: 'Covered By Your Grace, cursive' }}>
         <NavBar />
-        <Home />
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/games' component={GamesContainer} />
+        </Switch>
       </div>
      
     );
