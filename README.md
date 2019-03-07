@@ -2,6 +2,7 @@
     - map directions to games
     - twilio text alerts
     - search by zip code
+    - fire transition to show page
 
 ### Bare bones
     - get the user profile page with games, invites, and profile
@@ -9,7 +10,9 @@
     - 
 
 ### Next...
-    - React Router 
+    - React Router * check
+    - Got bames to render * check
+    - Get a show page for a game - 
 
 ### `npm test`
 
