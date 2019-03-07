@@ -11,11 +11,11 @@ class NavBar extends Component {
             <div>
         <Menu stackable inverted>
         <Menu.Item as={ Link } to='/'>
-          <img src='https://www.shareicon.net/data/128x128/2017/03/29/881801_school_512x512.png' />
+          <img src='https://www.shareicon.net/data/128x128/2017/03/29/881801_school_512x512.png' alt='orange basketball'/>
         </Menu.Item>
 
         <Menu.Item
-          as={ Link } to='/games'
+          as={ Link } to='/games/all'
           name='Browse All Games'
           onClick={this.handleItemClick}
         >

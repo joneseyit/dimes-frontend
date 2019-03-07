@@ -3,25 +3,30 @@ import { Switch, Route } from 'react-router-dom'
 import GamesList from './GamesList'
 import { GAMES } from '../endpoints'
 import { connect } from 'react-redux'
-import { fetchedPhotos } from '../redux/actions'
+import { fetchedGames } from '../redux/actions'
 
 
 
 class GamesContainer extends Component {
-    getPhotos() {
+    getGames() {
         fetch(GAMES)
         .then(res => res.json())
-        .then(photos => this.props.dispatch(fetchedPhotos(photos)))
+        .then(games => this.props.dispatch(fetchedGames(games)))
     }
 
     componentDidMount(){
-        this.getPhotos()
+        this.getGames()
     }
     render() {
         return (
+            <div>
             <Switch>
-                <Route exact path='/games' component={GamesList} />
+                <Route exact path='/games/all' component={GamesList} />
+                {/* Route for create game form */}
+                {/* Route for game show page */}
             </Switch>
+            </div>
+
         )
     }
 }
