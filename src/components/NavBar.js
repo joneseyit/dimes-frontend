@@ -23,12 +23,15 @@ class NavBar extends Component {
         </Menu.Item>
 
         <Menu.Item 
-          as={ Link } to='/login'
+          as={ Link } 
+          to='/login'
           name='login'  onClick={this.handleItemClick}>
           Sign-in <br/> <br/> Sign up
         </Menu.Item>
 
         <Menu.Item
+          as={Link}
+          to='/about'
           name='about'
           onClick={this.handleItemClick}
         >
@@ -43,7 +46,8 @@ class NavBar extends Component {
         </Menu.Item>
 
         <Menu.Item
-          as = {Link} to='/profile'
+          as = {Link} 
+          to='/profile'
           name='profile'
           onClick={this.handleItemClick}
         >

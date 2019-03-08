@@ -105,7 +105,7 @@ import {
                 </Segment>
               </Form>
               <Link to='/signup'>
-              <Message>
+              <Message style={{fontSize: '20px'}}>
                 Got next? <p>Sign Up</p>
               </Message>
               </Link>

@@ -13,14 +13,16 @@
     - React Router * check
     - Got bames to render * check
     - Get a show page for a game * Check
+    - Login working * check
+    - About Page * check
 
 
 ### What's left...
     - Get invite button working
-    - Get login working
-    - Get a profile Page
     - Get join game button working
-        
+    - Create User Page
+
+
 
 ### `npm test`
 

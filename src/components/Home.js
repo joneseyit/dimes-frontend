@@ -30,8 +30,11 @@ class Home extends Component {
                     }}
                     >
                      Welcome to Dimes
+                     
                     </h1>
+
                 </Container>
+
             </div>
         )
     }

@@ -5,7 +5,8 @@ import { Switch, Route } from 'react-router-dom'
 import GamesContainer from './components/GamesContainer'
 import Profile from './components/Profile'
 import Login from './components/Login'
-
+import About from './components/About'
+import CreateUser from './components/CreateUser'
 
 class App extends Component {
   render() {
@@ -18,6 +19,8 @@ class App extends Component {
           <Route path='/games' component={GamesContainer} />
           <Route path='/profile' component={Profile} />
           <Route path='/login' component={Login} />
+          <Route path='/about' component={About} />
+          <Route  path='/signup' component={CreateUser} />
         </Switch>
       </div>
      
