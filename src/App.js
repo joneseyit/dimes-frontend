@@ -3,6 +3,8 @@ import Home from './components/Home'
 import NavBar from './components/NavBar'
 import { Switch, Route } from 'react-router-dom'
 import GamesContainer from './components/GamesContainer'
+import Profile from './components/Profile'
+import Login from './components/Login'
 
 
 class App extends Component {
@@ -14,6 +16,8 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/games' component={GamesContainer} />
+          <Route path='/profile' component={Profile} />
+          <Route path='/login' component={Login} />
         </Switch>
       </div>
      

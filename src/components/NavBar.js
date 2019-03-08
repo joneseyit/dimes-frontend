@@ -22,7 +22,9 @@ class NavBar extends Component {
           Browse All Games
         </Menu.Item>
 
-        <Menu.Item name='login'  onClick={this.handleItemClick}>
+        <Menu.Item 
+          as={ Link } to='/login'
+          name='login'  onClick={this.handleItemClick}>
           Sign-in <br/> <br/> Sign up
         </Menu.Item>
 
@@ -38,6 +40,14 @@ class NavBar extends Component {
           onClick={this.handleItemClick}
         >
           How It Works
+        </Menu.Item>
+
+        <Menu.Item
+          as = {Link} to='/profile'
+          name='profile'
+          onClick={this.handleItemClick}
+        >
+          Profile
         </Menu.Item>
 
       </Menu>

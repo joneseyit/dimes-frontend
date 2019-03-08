@@ -28,7 +28,6 @@ class Home extends Component {
                         fontFamily: 'Covered By Your Grace, cursive',
                         marginTop: '20px'
                     }}
-                        
                     >
                      Welcome to Dimes
                     </h1>

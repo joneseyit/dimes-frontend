@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Images from '../CardImages'
-import { Card, Image, Icon } from 'semantic-ui-react'
+import { Card, Image, Icon, Container } from 'semantic-ui-react'
+
 
 class ShowGame extends React.Component {
     
@@ -10,6 +11,7 @@ class ShowGame extends React.Component {
         let randNum = Math.floor( Math.random() * 5 )
         return (
             <div>
+                <Container style={{padding: '20px', display: 'flex',justifyContent: 'center'}}>
             {
                 this.props.game === null ? 
                 <p>Loading un momento...</p>
@@ -30,6 +32,7 @@ class ShowGame extends React.Component {
                         </Card.Content>
                     </Card>)
             }   
+                </Container>
             </div>
         )
     }

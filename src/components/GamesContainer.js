@@ -19,8 +19,6 @@ class GamesContainer extends Component {
         this.getGames()
     }
     render() {
-
-        let a = this;
         return (
             <div>
             <Switch>
