@@ -49,7 +49,7 @@ import {
                 this.props.history.push("/login")
             } else{
                 localStorage.setItem('token', data.token)
-                localStorage.setItem('user', data.user)
+                localStorage.setItem('user', data.user_id)
                 this.props.history.push('./profile')
             }
         })

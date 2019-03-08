@@ -8,11 +8,51 @@ class CreateUser extends Component{
         email: '',
         bio: '',
         password: '',
+        img: '',
+        errors: ''
+    }
+
+    fileHandler = (e) => {
+        this.setState({ img: e.target.files[0] })
+    }
+
+    onChangeHandler =(e) => {
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
+    onSubmitHandler = (e) => {
+        const data = new FormData()
+        data.append('name', this.state.name)
+        data.append('username', this.state.username)
+        data.append('email', this.state.email)
+        data.append('bio', this.state.bio)
+        data.append('password', this.state.password)
+        data.append('img', this.state.img)
+
+        let options = {
+            method: 'POST',
+            body: data
+        }
+        debugger
+        fetch('http://localhost:3000/users', options)
+        .then(res => res.json())
+        .then(data => {
+            if(data.errors){
+                this.setState({ errors: data.errors })
+            } else {
+                localStorage.setItem('user', data.user_id)
+                localStorage.setItem('token', data.token)
+                this.props.history.push('/profile')
+            }
+        })
     }
 
     render(){
         return (
           <Container text>
+          {this.state.errors ? (
+            <div className="error-message">{this.state.errors}</div>
+          ) : null}
           <Form>
             <Form.Group widths='equal'>
               <Form.Field
@@ -48,8 +88,19 @@ class CreateUser extends Component{
               onChange={(e) => this.onChangeHandler(e)}
               name='bio'
             />
+
+            <Form.Field>
+              <label>Upload Avatar</label>
+              <input
+                type='file'
+                placeholder='Choose Image'
+                name='img'
+                onChange={this.fileHandler}
+              />
+              
+              </Form.Field>
+
             <Form.Input
-              id='form-textarea-control-bio'
               type='password'
               label='Password'
               placeholder='Password'
