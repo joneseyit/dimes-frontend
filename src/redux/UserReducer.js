@@ -1,7 +1,6 @@
 
 
 export function UserReducer(state = null, action){
-    debugger
     switch(action.type){
         case 'ADD_USER':
             return action.user

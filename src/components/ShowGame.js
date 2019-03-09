@@ -7,7 +7,6 @@ import { Card, Image, Icon, Container } from 'semantic-ui-react'
 class ShowGame extends React.Component {
     
     render() {
-        debugger
         let randNum = Math.floor( Math.random() * 5 )
         return (
             <div>
@@ -28,8 +27,18 @@ class ShowGame extends React.Component {
                         </Card.Content>
                         <Card.Content extra>
                             <Icon name='user' />
-                            22 Going
+                            {this.props.game.users.length} Going
                         </Card.Content>
+                        {this.props.game.users.map(user => {
+                            return (
+                                <Card.Content extra>
+                                    <Icon name='user' />
+                                    {user.username}
+                                </Card.Content>
+                            )
+                        })}
+
+
                     </Card>)
             }   
                 </Container>

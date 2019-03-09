@@ -21,7 +21,7 @@ const GameCard = (props) => {
             </Card.Content>
             <Card.Content extra>
                 <Icon name='user' />
-                22 Going
+                {props.game.users.length} Going
             </Card.Content>
         </Card>
     </div>

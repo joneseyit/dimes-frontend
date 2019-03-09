@@ -88,7 +88,7 @@ class CreateUser extends Component{
               label='Bio'
               placeholder='Tell the community about yourself, your style of play, etc.'
               onChange={(e) => this.onChangeHandler(e)}
-              name  ='bio'
+              name ='bio'
             />
 
             <Form.Field>

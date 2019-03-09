@@ -17,7 +17,6 @@ class Profile extends React.Component {
     }
     
     render() {
-
         return(
             this.props.user ? 
                 (<div>
@@ -43,7 +42,6 @@ class Profile extends React.Component {
     }
 }
 const mapStateToProps =(state) => {
-    console.log('inside state2props ')
     return { user: state.user }
 }
 
