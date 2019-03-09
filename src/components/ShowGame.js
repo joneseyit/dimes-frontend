@@ -5,6 +5,28 @@ import { Card, Image, Icon, Container, Button } from 'semantic-ui-react'
 
 
 class ShowGame extends React.Component {
+
+    joinGame = () => {
+        let userID = parseInt(localStorage.user_id)
+        let gameID = this.props.game.id
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user_game: {
+                    user_id: userID,
+                    game_id: gameID
+                }
+            })
+
+        }
+
+        fetch('http://localhost:3000/user_games', options)
+        .then(res => res.json())
+        .then(console.log)
+    }
     
     render() {
         let randNum = Math.floor( Math.random() * 5 )
@@ -25,7 +47,7 @@ class ShowGame extends React.Component {
                         <Card.Description>Notes: {this.props.game.notes}</Card.Description>
                         <Card.Description>Location: {this.props.game.place}</Card.Description>
                         </Card.Content>
-                        <Button animated='fade'>
+                        <Button animated='fade' onClick={this.joinGame}>
                             <Button.Content visible>Join Game</Button.Content>
                             <Button.Content hidden><Icon name= 'basketball ball'/> </Button.Content>
                         </Button>
