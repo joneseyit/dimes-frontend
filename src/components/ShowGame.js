@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Images from '../CardImages'
-import { Card, Image, Icon, Container } from 'semantic-ui-react'
+import { Card, Image, Icon, Container, Button } from 'semantic-ui-react'
 
 
 class ShowGame extends React.Component {
@@ -25,8 +25,11 @@ class ShowGame extends React.Component {
                         <Card.Description>Notes: {this.props.game.notes}</Card.Description>
                         <Card.Description>Location: {this.props.game.place}</Card.Description>
                         </Card.Content>
+                        <Button animated='fade'>
+                            <Button.Content visible>Join Game</Button.Content>
+                            <Button.Content hidden><Icon name= 'basketball ball'/> </Button.Content>
+                        </Button>
                         <Card.Content extra>
-                            {/* <Icon name='user' /> */}
                             {this.props.game.users.length} Going
                         </Card.Content>
                         {this.props.game.users.map(user => {

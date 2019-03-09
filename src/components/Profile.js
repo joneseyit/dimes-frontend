@@ -71,9 +71,9 @@ class Profile extends React.Component {
                             <Card style={{ padding: '20px' }}>
                                 <Image src='https://islandpacificacademy.org/wp-content/uploads/2015/12/Dimes-in-a-pile.jpg' />
                                 <Card.Content>
-                                <Card.Header>Invites</Card.Header>
+                                <Card.Header>Invites Received:</Card.Header>
                                 <Card.Description>
-                                   
+                                   You currently don't have any invites
                                 </Card.Description>
                                 <Card.Header>Send Invite</Card.Header>
                                 
