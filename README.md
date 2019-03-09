@@ -16,14 +16,19 @@
     - Login working * check
     - About Page * check
     - Create User Page *check
-    - Wire up profile page 
+    - Wire up profile page *check
 
 ### What's left...
     - Get invite button working
     - Get join game button working
+    - Get Join game going
     
 
+### Bugs 
+    - can manually change local storage and look at other profiles
 
+### Notes 
+ 
 
 ### `npm test`
 

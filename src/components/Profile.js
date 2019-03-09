@@ -17,17 +17,15 @@ class Profile extends React.Component {
     }
     
     render() {
-        // const { name, username, avatar, bio } = this.props.user
-        
 
         return(
-            this.props.user ? 
+            this.props.user_id ? 
                 (<div>
                     <Container style={{padding: '20px', display: 'flex',justifyContent: 'center'}}>
                         <Card style={{ padding: '20px' }}>
                             <Image src={this.props.user.avatar || 'https://images.unsplash.com/photo-1518479044931-404a93dcaf0d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'} />
                             <Card.Content>
-                            <Card.Header>Name: {this.props.user.name}</Card.Header>
+                            <Card.Header>Name {this.props.user.name}</Card.Header>
                             <Card.Meta>
                                 <span className='date'>Username: {this.props.user.username}</span>
                             </Card.Meta>
@@ -44,8 +42,9 @@ class Profile extends React.Component {
         )
     }
 }
-const mapStateToProps =({user}) => {
-    return { user: user }
+const mapStateToProps =(state) => {
+    console.log('inside state2props ')
+    return { user: state.user }
 }
 
 export default connect(mapStateToProps)(Profile)
