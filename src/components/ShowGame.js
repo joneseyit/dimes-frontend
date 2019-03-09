@@ -26,7 +26,7 @@ class ShowGame extends React.Component {
                         <Card.Description>Location: {this.props.game.place}</Card.Description>
                         </Card.Content>
                         <Card.Content extra>
-                            <Icon name='user' />
+                            {/* <Icon name='user' /> */}
                             {this.props.game.users.length} Going
                         </Card.Content>
                         {this.props.game.users.map(user => {
