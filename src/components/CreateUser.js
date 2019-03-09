@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Form, Input, TextArea, Button, Container } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { addUser } from '../redux/actions'
 
 class CreateUser extends Component{
     state = {
@@ -33,14 +35,14 @@ class CreateUser extends Component{
             method: 'POST',
             body: data
         }
-        debugger
         fetch('http://localhost:3000/users', options)
         .then(res => res.json())
         .then(data => {
             if(data.errors){
                 this.setState({ errors: data.errors })
             } else {
-                localStorage.setItem('user', data.user_id)
+                this.props.dispatch(addUser(data.user))
+                localStorage.setItem('user_id', data.user_id)
                 localStorage.setItem('token', data.token)
                 this.props.history.push('/profile')
             }
@@ -119,4 +121,5 @@ class CreateUser extends Component{
       }
     }
 
-export default CreateUser
+
+export default connect()(CreateUser)

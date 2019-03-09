@@ -10,6 +10,7 @@ import {
   } from "semantic-ui-react";
   import { Link } from "react-router-dom";
   import { connect } from "react-redux";
+  import { addUser } from '../redux/actions'
   
   class Login extends Component {
     state = {
@@ -48,8 +49,9 @@ import {
                 this.setState({ errors: data.errors})
                 this.props.history.push("/login")
             } else{
+                this.props.dispatch(addUser(data.user))
                 localStorage.setItem('token', data.token)
-                localStorage.setItem('user', data.user_id)
+                localStorage.setItem('user_id', data.user_id)
                 this.props.history.push('./profile')
             }
         })

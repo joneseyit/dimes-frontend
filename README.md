@@ -15,12 +15,13 @@
     - Get a show page for a game * Check
     - Login working * check
     - About Page * check
-
+    - Create User Page *check
+    - Wire up profile page 
 
 ### What's left...
     - Get invite button working
     - Get join game button working
-    - Create User Page
+    
 
 
 
