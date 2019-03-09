@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Image, Container } from 'semantic-ui-react'
+import { Card, Image, Container, Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { addUser } from '../redux/actions'
 import { Link } from 'react-router-dom'
@@ -52,18 +52,28 @@ class Profile extends React.Component {
                             <Card style={{ padding: '20px' }}>
                                 <Image src={'https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'} />
                                 <Card.Content>
-                                <Card.Header>Upcoming Games: 
-                                    </Card.Header>
+                                <Card.Header>Upcoming Games: </Card.Header>
                                     <Card.Description>
                                     {   this.props.user.games.length ? 
                                         this.props.user.games.map(game => {
-                                                        return (<h3 as={Link} to='/games'>{game.title}</h3>)
+                                                        let id = game.id
+                                                        return (
+                                                        <div>
+                                                            <Link to={`/games/${id}`}>{game.title}</Link>
+                                                        </div>
+                                                        )
                                                     })
                                         :
                                         <div>You're not registered for a game right now</div>
                                     }
 
                                     </Card.Description>
+                                    <Button animated='fade' onClick={this.joinGame}>
+                            <Button.Content visible>Create Game</Button.Content>
+                            <Button.Content hidden><Icon name= 'basketball ball'/> </Button.Content>
+                        </Button>
+                                    
+                                    
                                 </Card.Content>
 
                             </Card>

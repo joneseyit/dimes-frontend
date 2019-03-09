@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Images from '../CardImages'
 import { Card, Image, Icon, Container, Button } from 'semantic-ui-react'
+import { showGame } from '../redux/actions'
 
 
 class ShowGame extends React.Component {
@@ -25,7 +26,7 @@ class ShowGame extends React.Component {
 
         fetch('http://localhost:3000/user_games', options)
         .then(res => res.json())
-        .then(console.log)
+        .then(game => this.props.dispatch(showGame(game)))
     }
     
     render() {
