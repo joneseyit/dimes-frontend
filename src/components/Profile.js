@@ -19,7 +19,7 @@ class Profile extends React.Component {
     render() {
 
         return(
-            this.props.user_id ? 
+            this.props.user ? 
                 (<div>
                     <Container style={{padding: '20px', display: 'flex',justifyContent: 'center'}}>
                         <Card style={{ padding: '20px' }}>
