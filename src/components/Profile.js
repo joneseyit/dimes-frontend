@@ -18,18 +18,6 @@ class Profile extends React.Component {
     }
     
     render() {
-        // function games(){
-        //     if(this.props.user.games.length){  
-        //         return this.props.user.games.map(game => {
-        //             <h3 as={Link} to='/games'>{game.title}</h3>
-        //         })
-        //     }
-        //     else {
-        //         return "You're currently not signed up for any games"
-        //     }
-        // }
-
-        
         return(
             this.props.user ? 
                 (<div>
@@ -59,7 +47,7 @@ class Profile extends React.Component {
                                                         let id = game.id
                                                         return (
                                                         <div>
-                                                            <Link to={`/games/${id}`}>{game.title}</Link>
+                                                            <Link to={`/games/${id}`} key={id}>{game.title}</Link>
                                                         </div>
                                                         )
                                                     })
@@ -68,7 +56,7 @@ class Profile extends React.Component {
                                     }
 
                                     </Card.Description>
-                                    <Button animated='fade' onClick={this.joinGame}>
+                                    <Button as={Link} to='/games/new' animated='fade'>
                             <Button.Content visible>Create Game</Button.Content>
                             <Button.Content hidden><Icon name= 'basketball ball'/> </Button.Content>
                         </Button>

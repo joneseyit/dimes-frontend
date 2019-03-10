@@ -6,6 +6,9 @@ import { showGame } from '../redux/actions'
 
 
 class ShowGame extends React.Component {
+    state = {
+        error: ''
+    }
 
     joinGame = () => {
         let userID = parseInt(localStorage.user_id)
@@ -26,7 +29,13 @@ class ShowGame extends React.Component {
 
         fetch('http://localhost:3000/user_games', options)
         .then(res => res.json())
-        .then(game => this.props.dispatch(showGame(game)))
+        .then( game =>{
+            if(game.error){
+                this.setState({ error: game.error})
+            } else {
+                return this.props.dispatch(showGame(game))
+            }
+        }) 
     }
     
     render() {
@@ -34,6 +43,7 @@ class ShowGame extends React.Component {
         return (
             <div>
                 <Container style={{padding: '20px', display: 'flex',justifyContent: 'center'}}>
+                
             {
                 this.props.game === null ? 
                 <p>Loading un momento...</p>
@@ -48,6 +58,9 @@ class ShowGame extends React.Component {
                         <Card.Description>Notes: {this.props.game.notes}</Card.Description>
                         <Card.Description>Location: {this.props.game.place}</Card.Description>
                         </Card.Content>
+                        <Card.Description>
+                            {this.state.error} 
+                        </Card.Description>
                         <Button animated='fade' onClick={this.joinGame}>
                             <Button.Content visible>Join Game</Button.Content>
                             <Button.Content hidden><Icon name= 'basketball ball'/> </Button.Content>

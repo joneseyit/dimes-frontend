@@ -35,12 +35,12 @@ class NavBar extends Component {
           About Dimes
         </Menu.Item>
 
-        <Menu.Item
+        {/* <Menu.Item
           name='explained'
           onClick={this.handleItemClick}
         >
           How It Works
-        </Menu.Item>
+        </Menu.Item> */}
 
         {localStorage.user_id ? 
           (<Fragment>

@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { fetchedGames } from '../redux/actions'
 import { showGame } from '../redux/actions'
 import ShowGame from './ShowGame'
+import CreateGame from './CreateGame'
 
 class GamesContainer extends Component {
 
@@ -24,7 +25,7 @@ class GamesContainer extends Component {
             <Switch>
 
                 <Route path='/games/all' component={GamesList} />
-                {/* Route for create game form */}
+                <Route path='/games/new' component={CreateGame} />
                 <Route path='/games/:id'  render={ (props) => {
                     let id = parseInt(props.match.params.id)
                     let game = this.props.games.find( game => game.id === id)

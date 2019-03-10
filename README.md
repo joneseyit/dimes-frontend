@@ -22,10 +22,13 @@
     - Get invite button working
     - Get join game button working
     - Get Join game going
+    - Need to filter upcoming games by date
     
 
 ### Bugs 
     - can manually change local storage and look at other profiles
+    - calling on the dispatch add user in 2 places - login and in the profile page because store would lose state on refresh
+    
 
 ### Notes 
  
