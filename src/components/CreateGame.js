@@ -8,13 +8,19 @@ class CreateGame extends React.Component {
     state = {
         title: '',
         place: '',
-        time: '',
         notes: '',
-        user_id: localStorage.id
+        time: new Date(),
+        user_id: localStorage.user_id
     }
+
+
 
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
+    }
+
+    handleDateTime = (e) => {
+        this.setState({ time: e.toDate()})
     }
 
     onSubmitHandler = (e) => {
@@ -23,15 +29,15 @@ class CreateGame extends React.Component {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
-            }
+            },
             body: JSON.stringify(this.state)
         }
 
         fetch('http://localhost:3000/games', options)
         .then(res => res.json())
         .then(game => {
-            this.props.dispatch(addGame(game))
-            this.props.history.push(`/games${game.id}`)
+            // this.props.dispatch(addGame(game))
+            console.log(game)
         })
     }
     
@@ -44,7 +50,7 @@ class CreateGame extends React.Component {
             <input
                 placeholder="Name"
                 name='title'
-                onChange={this.getCoords}
+                onChange={this.handleChange}
             />
             </Form.Field>
     
@@ -53,17 +59,17 @@ class CreateGame extends React.Component {
             <input
                 placeholder="Location Notes"
                 name='place'
-                onChange={this.onChangeHandler}
+                onChange={this.handleChange}
             />
             </Form.Field>
     
             <Form.Field>
             <label>Game notes</label>
             <input
-                placeholder="Is it more competitve, just for fun, etc."
+                placeholder="Is it more competitve, just for fun, half-court or full-court, etc."
                 name='notes'
                 control={TextArea}
-                onChange={this.onChangeHandler}
+                onChange={this.handleChange}
             />
             </Form.Field>
 
@@ -77,10 +83,13 @@ class CreateGame extends React.Component {
                 dateFormat="MMMM d, yyyy h:mm aa"
                 timeCaption="time"
             /> */}
-
+            <label>Select a date and time</label>
             <DateTime 
-                input={false}
+                inputProps={{ placeholder: 'Selec the date and time'}}
+                input={false}  
                 name='time'
+                onChange={this.handleDateTime}
+                
             />
     
             <Form.Field>
