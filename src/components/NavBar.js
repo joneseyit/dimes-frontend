@@ -26,15 +26,6 @@ class NavBar extends Component {
           Browse All Games
         </Menu.Item>
 
-        <Menu.Item
-          as={Link}
-          to='/about'
-          name='about'
-          onClick={this.handleItemClick}
-        >
-          About Dimes
-        </Menu.Item>
-
         {/* <Menu.Item
           name='explained'
           onClick={this.handleItemClick}
@@ -70,6 +61,16 @@ class NavBar extends Component {
             Sign-in <br/> <br/> Sign up
             </Menu.Item>)
           }
+
+        <Menu.Item
+          as={Link}
+          to='/about'
+          name='about'
+          onClick={this.handleItemClick}
+        >
+          About Dimes
+        </Menu.Item>
+
       </Menu>
             </div>
         )
