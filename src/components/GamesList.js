@@ -4,9 +4,13 @@ import { connect } from 'react-redux'
 import Images from '../CardImages'
 import { Link } from 'react-router-dom'
 
+
+
 const GameCard = (props) => {
+    const moment = require('moment')
     let randNum = Math.floor( Math.random() * 5 )
     let id = props.game.id
+    let time = moment(props.game.time).format("MMMM-DD-YYYY h:mm a")
     return (
     <div>
         <Card as={Link} to={`/games/${id}`} style={{ padding: '20px' }}>
@@ -14,7 +18,7 @@ const GameCard = (props) => {
             <Card.Content>
             <Card.Header><div style={{color: 'blue'}}>Title:</div> {props.game.title}</Card.Header>
             <Card.Meta>
-                <span className='date'>Date: {props.game.time}</span>
+                <span className='date'>Date: {time}</span>
             </Card.Meta>
             <Card.Description>Notes: {props.game.notes}</Card.Description>
             <Card.Description>Location: {props.game.place}</Card.Description>
