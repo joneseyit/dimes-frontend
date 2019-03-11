@@ -1,16 +1,38 @@
 import React from 'react'
 import { Form, Container, TextArea } from 'semantic-ui-react'
 import * as DateTime from 'react-datetime'
+import { addGame } from '../redux/actions'
+import { connect } from 'react-redux'
+
 class CreateGame extends React.Component {
     state = {
         title: '',
         place: '',
         time: '',
-        notes: ''
+        notes: '',
+        user_id: localStorage.id
     }
 
     handleChange = (e) => {
-        this.setState({  })
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
+    onSubmitHandler = (e) => {
+        let options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+            body: JSON.stringify(this.state)
+        }
+
+        fetch('http://localhost:3000/games', options)
+        .then(res => res.json())
+        .then(game => {
+            this.props.dispatch(addGame(game))
+            this.props.history.push(`/games${game.id}`)
+        })
     }
     
     render(){
@@ -73,4 +95,4 @@ class CreateGame extends React.Component {
 }
     
 
-export default CreateGame
+export default connect()(CreateGame)
