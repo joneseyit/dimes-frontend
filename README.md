@@ -9,21 +9,27 @@
     - get home page with log in or view all games
     - 
 
-### Next...
+### Completed...
     - React Router * check
-    - Got bames to render * check
+    - Got games to render * check
     - Get a show page for a game * Check
     - Login working * check
     - About Page * check
     - Create User Page *check
     - Wire up profile page *check
     - Get join game button working *check
-    - Get Join game going *
+    - Get Join game going * check
+    - Auto attach a user to the game when they create it *check
+    - Get invite button working * check 
+ 
+
+### Next 
+    - Get invites received to show and responded to
 
 ### What's left...
-    - Get invite button working
-    - Auto attach a user to the game when they create it
     
+    
+    - How to 'listen' for an invite coming in - when should the profile page update
     - Need to filter upcoming games by date
     
 
@@ -31,6 +37,7 @@
     - can manually change local storage and look at other profiles
     - calling on the dispatch add user in 2 places - login and in the profile page because store would lose state on refresh
     - may be losing the user in the store from not saving state
+    - semantic ui form doesn't reset
     
     
 

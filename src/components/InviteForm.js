@@ -6,13 +6,20 @@ import { connect } from 'react-redux'
 class InviteForm extends React.Component{
     state = {
         users: [],
-        message: ''
+        message: '',
+        invitedId: null,
+        gameId: null
+    }
+
+    onChangeHandler = (value, text) => {
+        this.setState({ [text.name]: text.value })
     }
 
     submitHandler = (e) => {
-        let invitedId = e.target.invited.value
+        e.preventDefault()
+        let invitedId = this.state.invitedId
         let curUserId = this.props.user.id
-        let gameId = e.target.game.value
+        let gameId = this.state.gameId
         let options = {
             method: 'POST',
             headers: {
@@ -30,8 +37,14 @@ class InviteForm extends React.Component{
 
         fetch('http://localhost:3000/invitations', options)
         .then( res => res.json())
-        .then( console.log )
-        .then(this.setState({ message: 'You dished out an invite - nice!' }))
+        .then( data => {
+            if(data.error){
+                this.setState({ message: data.error})
+            }
+            else {
+                this.setState({ message: "Your invite has been sent!"})
+            }
+        })
     }
 
     fetchUsers = () => {
@@ -45,18 +58,22 @@ class InviteForm extends React.Component{
     }
     
     render() {
-        // let users = this.state.users.length > 0 ? this.state.users.map( user => user.invite_format) : []
+        debugger
+        //map over and convert users to the format to be put into the dropdown
         let users = this.state.users.map( user => user.invite_format)
-        let usersMinusMe = users.filter(user => user.id !== this.props.user.id)
-        let games = this.props.user.games.map( game => { key: game.id, value: game.id, text: game.title } )
+        //the id gets saved in the value key of the format for the dropdown
+        let usersMinusMe = users.filter(user => user.value !== this.props.user.id)
+        let games = this.props.user.games.map( game => {
+            return { key: game.id, value: game.id, text: game.title }
+        })
         return (
 
             <div>
                 <p>{this.state.message}</p>
                 <Form onSubmit={this.submitHandler}>
                     <Form.Field>
-                        <Dropdown placeholder='Which Player' name='invited' options={usersMinusMe} />
-                        <Dropdown placeholder='Which Game' name='game' options={games} />
+                        <Dropdown placeholder='Which Player' name='invitedId' options={usersMinusMe} onChange={this.onChangeHandler} />
+                        <Dropdown placeholder='Which Game' name='gameId' options={games} onChange={this.onChangeHandler} />
                         <input type='submit' value="Invite User" />
                     </Form.Field>
                 </Form>

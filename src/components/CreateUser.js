@@ -38,6 +38,7 @@ class CreateUser extends Component{
         fetch('http://localhost:3000/users', options)
         .then(res => res.json())
         .then(data => {
+            console.log(data)
             if(data.errors){
                 this.setState({ errors: data.errors })
             } else {
