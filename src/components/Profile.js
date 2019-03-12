@@ -22,8 +22,8 @@ class Profile extends React.Component {
         return(
             this.props.user ? 
                 (<div>
-                    <Container style={{padding: '20px', display: 'flex',justifyContent: 'center'}}>
-                        <Card.Group>
+                    <Container style={{padding: '20px', display: 'flex',justifyContent: 'left'}}>
+                        <Card.Group itemsPerRow={3}>
                             <Card style={{ padding: '20px' }}>
                                 <Image src={this.props.user.avatar || 'https://images.unsplash.com/photo-1518479044931-404a93dcaf0d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'} />
                                 <Card.Content>
@@ -72,7 +72,26 @@ class Profile extends React.Component {
                                 <Card.Content>
                                 <Card.Header>Invites Received:</Card.Header>
                                 <Card.Description>
-                                   You currently don't have any invites
+                                   {this.props.user.inviteds.length > 0 ? 
+                                   (
+                                    <Card>
+                                         <Card.Content extra>
+                                            <div className='ui two buttons'>
+                                            <Button basic color='green'>
+                                                Approve
+                                            </Button>
+                                            <Button basic color='red'>
+                                                Decline
+                                            </Button>
+                                            </div>
+                                        </Card.Content>
+                                    </Card>   
+                                   )
+                                   :
+                                   (
+                                       "You currently don't have any invites to respond to"
+                                    )
+                                    }
                                 </Card.Description>
                                 <Card.Header>Send Invite</Card.Header>
                                     <InviteForm />
