@@ -3,6 +3,7 @@ import { Card, Image, Container, Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { addUser } from '../redux/actions'
 import { Link } from 'react-router-dom'
+import InviteForm from './InviteForm'
 
 class Profile extends React.Component {
 
@@ -74,7 +75,7 @@ class Profile extends React.Component {
                                    You currently don't have any invites
                                 </Card.Description>
                                 <Card.Header>Send Invite</Card.Header>
-                                
+                                    <InviteForm />
                                 </Card.Content>
 
                             </Card>

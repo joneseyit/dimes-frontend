@@ -17,11 +17,13 @@
     - About Page * check
     - Create User Page *check
     - Wire up profile page *check
+    - Get join game button working *check
+    - Get Join game going *
 
 ### What's left...
     - Get invite button working
-    - Get join game button working
-    - Get Join game going
+    - Auto attach a user to the game when they create it
+    
     - Need to filter upcoming games by date
     
 

@@ -36,8 +36,7 @@ class CreateGame extends React.Component {
         fetch('http://localhost:3000/games', options)
         .then(res => res.json())
         .then(game => {
-            // this.props.dispatch(addGame(game))
-            console.log(game)
+            this.props.history.push('/profile')
         })
     }
     
