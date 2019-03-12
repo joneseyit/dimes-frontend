@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Dropdown } from 'semantic-ui-react'
+import { Form, Dropdown, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
 
@@ -58,7 +58,6 @@ class InviteForm extends React.Component{
     }
     
     render() {
-        debugger
         //map over and convert users to the format to be put into the dropdown
         let users = this.state.users.map( user => user.invite_format)
         //the id gets saved in the value key of the format for the dropdown
@@ -74,7 +73,7 @@ class InviteForm extends React.Component{
                     <Form.Field>
                         <Dropdown placeholder='Which Player' name='invitedId' options={usersMinusMe} onChange={this.onChangeHandler} />
                         <Dropdown placeholder='Which Game' name='gameId' options={games} onChange={this.onChangeHandler} />
-                        <input type='submit' value="Invite User" />
+                        <Button type='submit' value="Dish Invite">Dish Invite </Button>
                     </Form.Field>
                 </Form>
             </div>

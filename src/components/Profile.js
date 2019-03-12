@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { addUser } from '../redux/actions'
 import { Link } from 'react-router-dom'
 import InviteForm from './InviteForm'
+import InviteCard from './InviteCard'
 
 class Profile extends React.Component {
 
@@ -74,18 +75,9 @@ class Profile extends React.Component {
                                 <Card.Description>
                                    {this.props.user.inviteds.length > 0 ? 
                                    (
-                                    <Card>
-                                         <Card.Content extra>
-                                            <div className='ui two buttons'>
-                                            <Button basic color='green'>
-                                                Approve
-                                            </Button>
-                                            <Button basic color='red'>
-                                                Decline
-                                            </Button>
-                                            </div>
-                                        </Card.Content>
-                                    </Card>   
+                                        this.props.user.inviteds.map(invited => 
+                                            <InviteCard invited={invited}  />
+                                            )
                                    )
                                    :
                                    (
@@ -93,7 +85,7 @@ class Profile extends React.Component {
                                     )
                                     }
                                 </Card.Description>
-                                <Card.Header>Send Invite</Card.Header>
+                                <Card.Header style={{ padding: '10px'}}>Send an Invite:</Card.Header>
                                     <InviteForm />
                                 </Card.Content>
 
