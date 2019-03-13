@@ -75,7 +75,7 @@ class Profile extends React.Component {
                                 <Card.Description>
                                    {this.props.user.inviteds.length > 0 ? 
                                    (
-                                        this.props.user.inviteds.map(invited => 
+                                        this.props.user.inviteds.filter(invited => invited.responded === false).map(invited => 
                                             <InviteCard invited={invited}  />
                                             )
                                    )
