@@ -28,7 +28,7 @@
 
 ### What's left...
     
-    
+    - clear dropdown form after submitting an invite
     - How to 'listen' for an invite coming in - when should the profile page update
     - Need to filter upcoming games by date
     
@@ -39,6 +39,9 @@
     - may be losing the user in the store from not saving state
     - semantic ui form doesn't reset
     
+    CurrentBugs- 
+    - getting invites to update without hard refresh
+    - need to hard refresh to get logout to show up
     
 
 ### Notes 

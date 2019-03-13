@@ -10,9 +10,9 @@ import { showGame } from '../redux/actions'
 
 
 const InviteCard = (props) => {
-    const gameId = props.invited.game.id
+    const gameId = props.invite.game.id
     const userId = parseInt(localStorage.user_id)
-    const invitedId = props.invited.id
+    const invitedId = props.invite.id
 
 
 
@@ -35,13 +35,11 @@ const InviteCard = (props) => {
         .then( game =>{
             if(game.error){
                 this.setState({ error: game.error})
-            } else {
-                return this.props.dispatch(showGame(game))
-            }
+            } 
         }) 
     }
 
-    const acceptInvite = (invitedId, gameId, userId) => {
+    const changeInviteStatus = (e, invitedId, gameId, userId) => {
         let options = {
             method: 'PATCH',
             headers: {
@@ -54,29 +52,26 @@ const InviteCard = (props) => {
 
         fetch(`http://localhost:3000/invitations/${invitedId}`, options)
 
-        joinGame(userId, gameId)
+        if(e.target.name === "accept"){ joinGame(userId, gameId)}
     }
 
-    const declineInvite = (inviteId) => {
-
-    }
     return (
         <Card>
             <Card.Content as={Link} to={`/games/${gameId}`} >
                 <Image floated='right' size='mini' src='https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' />
-                <Card.Header>Let's Run!</Card.Header>
+                <Card.Header>Invite Details</Card.Header>
                 <Card.Meta>  </Card.Meta>
                 <Card.Description>
-                <strong>{props.invited.user.username} </strong> has invited you to play in <strong>{props.invited.game.title}</strong>
+                <strong>{props.invite.sender} </strong> has invited you to play in <strong>{props.invite.game.title}</strong>
                 </Card.Description>
                     </Card.Content>
                 <Card.Content extra>
                     <div className='ui two buttons'>
-                    <Button basic color='green' onClick={(e) => acceptInvite(invitedId, gameId, userId)}>
-                        Heck yeah!
+                    <Button basic color='green' name='accept' onClick={(e) => changeInviteStatus(e, invitedId, gameId, userId)}>
+                        Accept
                     </Button>
-                    <Button basic color='red' onClick={declineInvite}>
-                        Nope
+                    <Button basic color='red' name='decline' onClick={(e) => changeInviteStatus(e, invitedId, gameId, userId)}>
+                        Decline
                     </Button>
                     </div>
             </Card.Content>

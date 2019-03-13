@@ -73,22 +73,17 @@ class Profile extends React.Component {
                                 <Card.Content>
                                 <Card.Header>Invites Received:</Card.Header>
                                 <Card.Description>
-                                   {this.props.user.inviteds.length > 0 ? 
-                                   (
-                                        this.props.user.inviteds.filter(invited => invited.responded === false).map(invited => 
-                                            <InviteCard invited={invited}  />
-                                            )
-                                   )
+                                   {this.props.user.current_invites.length > 0 ? 
+                                        this.props.user.current_invites.map(invite => <InviteCard invite={invite} /> )
                                    :
                                    (
                                        "You currently don't have any invites to respond to"
                                     )
                                     }
                                 </Card.Description>
-                                <Card.Header style={{ padding: '10px'}}>Send an Invite:</Card.Header>
+                                <Card.Header style={{marginTop: '10px' }}>Send an Invite:</Card.Header>
                                     <InviteForm />
                                 </Card.Content>
-
                             </Card>
                         </Card.Group>
                     </Container>

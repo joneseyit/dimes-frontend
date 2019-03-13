@@ -71,17 +71,7 @@ class CreateGame extends React.Component {
                 onChange={this.handleChange}
             />
             </Form.Field>
-
-            {/* <DatePicker
-                inline
-                selected={Date.now()}
-                onChange={this.handleChange}
-                showTimeSelect
-                timeFormat="HH:mm"
-                timeIntervals={30}
-                dateFormat="MMMM d, yyyy h:mm aa"
-                timeCaption="time"
-            /> */}
+            
             <label>Select a date and time</label>
             <DateTime 
                 inputProps={{ placeholder: 'Selec the date and time'}}

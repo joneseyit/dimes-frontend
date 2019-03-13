@@ -8,7 +8,8 @@ class InviteForm extends React.Component{
         users: [],
         message: '',
         invitedId: null,
-        gameId: null
+        gameId: null,
+        dropdownDefault: 'Choose a player'
     }
 
     onChangeHandler = (value, text) => {
@@ -71,8 +72,16 @@ class InviteForm extends React.Component{
                 <p>{this.state.message}</p>
                 <Form onSubmit={this.submitHandler}>
                     <Form.Field>
-                        <Dropdown placeholder='Which Player' name='invitedId' options={usersMinusMe} onChange={this.onChangeHandler} />
-                        <Dropdown placeholder='Which Game' name='gameId' options={games} onChange={this.onChangeHandler} />
+                        <label>Player</label>
+                        <Dropdown placeholder='Which Player' icon='basketball ball' name='invitedId' options={usersMinusMe} onChange={this.onChangeHandler} style={{padding: '5px'}} />
+                    </Form.Field>
+
+                    <Form.Field>   
+                        <label>Game</label>
+                        <Dropdown placeholder='Which Game' icon='basketball ball' name='gameId' options={games} onChange={this.onChangeHandler} />
+                    </Form.Field>
+
+                    <Form.Field>
                         <Button type='submit' value="Dish Invite">Dish Invite </Button>
                     </Form.Field>
                 </Form>
