@@ -1,15 +1,8 @@
 import React, { Component } from 'react'
-import {
-    Grid,
-    Form,
-    Button,
-    Segment,
-    Header,
-    Message,
-    Image
-  } from "semantic-ui-react";
+import { Grid, Form, Button, Segment, Header, Message, Image } from "semantic-ui-react";
   import { Link } from "react-router-dom";
   import { connect } from "react-redux";
+  import { addUser } from '../redux/actions'
   
   
   class Login extends Component {
@@ -52,6 +45,7 @@ import {
                 localStorage.setItem('token', data.token)
                 localStorage.setItem('user_id', data.user_id)
                 this.props.history.push('./profile')
+                this.props.dispatch(addUser(JSON.parse(data.user)))
             }
         })
     }

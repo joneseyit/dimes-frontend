@@ -5,6 +5,7 @@ import { addUser } from '../redux/actions'
 import { Link } from 'react-router-dom'
 import InviteForm from './InviteForm'
 import InviteCard from './InviteCard'
+import { allInvites } from '../redux/actions'
 
 class Profile extends React.Component {
 
@@ -12,7 +13,10 @@ class Profile extends React.Component {
         let id = parseInt(localStorage.user_id)
         fetch(`http://localhost:3000/users/${id}`)
         .then(res => res.json())
-        .then(user => this.props.dispatch(addUser(user)))
+        .then(user => {
+            this.props.dispatch(addUser(user))
+            this.props.dispatch(allInvites(user.current_invites))
+        })
     }
 
     componentDidMount(){
@@ -73,8 +77,8 @@ class Profile extends React.Component {
                                 <Card.Content>
                                 <Card.Header>Invites Received:</Card.Header>
                                 <Card.Description>
-                                   {this.props.user.current_invites.length > 0 ? 
-                                        this.props.user.current_invites.map(invite => <InviteCard invite={invite} /> )
+                                   {this.props.invites.length > 0 ? 
+                                        this.props.invites.map(invite => <InviteCard invite={invite} /> )
                                    :
                                    (
                                        "You currently don't have any invites to respond to"
@@ -95,7 +99,7 @@ class Profile extends React.Component {
     }
 }
 const mapStateToProps =(state) => {
-    return { user: state.user }
+    return { user: state.user, invites: state.invites }
 }
 
 export default connect(mapStateToProps)(Profile)

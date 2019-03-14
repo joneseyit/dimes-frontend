@@ -3,6 +3,8 @@ const SHOW_GAME = 'SHOW_GAME'
 const ADD_USER = 'ADD_USER'
 const LOGOUT = 'LOGOUT'
 const ADD_GAME = 'ADD_GAME'
+const ALL_INVITES = 'ALL_INVITES'
+const RESPONDED = 'RESPONDED'
 
 export function fetchedGames(games){
     return { type: FETCHED_GAMES, games: games }
@@ -22,4 +24,12 @@ export function logoutUser(){
 
 export function addGame(game){
     return { type: ADD_GAME, game: game}
+}
+
+export function allInvites(invites){
+    return { type: ALL_INVITES, invites: invites}
+}
+
+export function responded(invite){
+    return { type: RESPONDED, invite: invite}
 }

@@ -33,7 +33,7 @@ class NavBar extends Component {
           How It Works
         </Menu.Item> */}
 
-        {localStorage.user_id ? 
+        {this.props.user ? 
           (<Fragment>
           <Menu.Item
             as = {Link} 
@@ -77,4 +77,8 @@ class NavBar extends Component {
     }
 }
 
-export default connect()(NavBar)
+const mapStateToProps = (state) => {
+  return {user: state.user}
+}
+
+export default connect(mapStateToProps)(NavBar)
