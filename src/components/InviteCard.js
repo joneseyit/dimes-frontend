@@ -1,17 +1,9 @@
 import React from 'react'
 import {Card, Button, Image } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { addGame } from '../redux/actions'
 import { responded } from '../redux/actions'
-
-
-// accept button needs to: create a join fetch request to the game, push history to game show page
-// post request to show invite as responded.  Remove invite from user profile page
-// decline button needs to update invite to responded 
-// add invites to store - invite reducer and one that acknowledges a response
-
-
+import { showGame } from '../redux/actions'
 
 class InviteCard extends React.Component {
     state = {
@@ -31,14 +23,14 @@ class InviteCard extends React.Component {
                 }
             })
         }
-
         fetch('http://localhost:3000/user_games', options)
         .then(res => res.json())
         .then( game =>{
             if(game.error){
                 this.setState({ error: game.error})
             } else {
-                this.props.dispatch(addGame(game))
+                this.props.dispatch(showGame(game))
+                this.props.history.push(`/games/${gameId}`)
             }
         }) 
     }
@@ -58,7 +50,7 @@ class InviteCard extends React.Component {
         .then(res => res.json())
         .then( invite => this.props.dispatch(responded(invite)))
 
-        if(e.target.name === "accept"){ this.joinGame(userId, gameId)}
+        if(e.target.name === "accept"){ this.joinGame(userId, gameId) }
     }
 
     render(){
@@ -96,4 +88,4 @@ const mapStateToProps = (state) => {
     return { invites: state.invites, user: state.user, }
 }
 
-export default connect(mapStateToProps)(InviteCard)
+export default withRouter(connect(mapStateToProps)(InviteCard))

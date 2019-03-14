@@ -63,7 +63,7 @@ class InviteForm extends React.Component{
         let users = this.state.users.map( user => user.invite_format)
         //the id gets saved in the value key of the format for the dropdown
         let usersMinusMe = users.filter(user => user.value !== this.props.user.id)
-        let games = this.props.user.games.map( game => {
+        let games = this.props.user.upcoming_games.map( game => {
             return { key: game.id, value: game.id, text: game.title }
         })
         return (

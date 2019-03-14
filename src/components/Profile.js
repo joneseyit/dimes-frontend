@@ -48,8 +48,8 @@ class Profile extends React.Component {
                                 <Card.Content>
                                 <Card.Header>Upcoming Games: </Card.Header>
                                     <Card.Description>
-                                    {   this.props.user.games.length ? 
-                                        this.props.user.games.map(game => {
+                                    {   this.props.user.upcoming_games.length ? 
+                                        this.props.user.upcoming_games.map(game => {
                                                         let id = game.id
                                                         return (
                                                         <div>
