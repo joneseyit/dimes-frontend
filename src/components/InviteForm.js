@@ -1,6 +1,7 @@
 import React from 'react'
 import { Form, Dropdown, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import { INVITATIONS, USERS } from '../endpoints'
 
 
 class InviteForm extends React.Component{
@@ -36,7 +37,7 @@ class InviteForm extends React.Component{
 
         }
 
-        fetch('http://localhost:3000/invitations', options)
+        fetch(INVITATIONS, options)
         .then( res => res.json())
         .then( data => {
             if(data.error){
@@ -49,7 +50,7 @@ class InviteForm extends React.Component{
     }
 
     fetchUsers = () => {
-        fetch('http://localhost:3000/users')
+        fetch(USERS)
         .then(res => res.json())
         .then(users => (this.setState({ users: users})))
     }

@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { responded } from '../redux/actions'
 import { showGame } from '../redux/actions'
+import { USER_GAMES, INVITATIONS } from '../endpoints'
 
 class InviteCard extends React.Component {
     state = {
@@ -23,7 +24,7 @@ class InviteCard extends React.Component {
                 }
             })
         }
-        fetch('http://localhost:3000/user_games', options)
+        fetch(USER_GAMES, options)
         .then(res => res.json())
         .then( game =>{
             if(game.error){
@@ -46,7 +47,7 @@ class InviteCard extends React.Component {
              })
         }
 
-        fetch(`http://localhost:3000/invitations/${invitedId}`, options)
+        fetch(`${INVITATIONS}${invitedId}`, options)
         .then(res => res.json())
         .then( invite => this.props.dispatch(responded(invite)))
 

@@ -1,5 +1,8 @@
 /*----------  DIMES API ENDPOINTS  ----------*/
 
-export const GAMES = 'http://localhost:3000/games'
-export const USERS = "http://localhost:3000/users"
-export const USER_GAMES = "http://localhost:3000/user_games"
+export const LOGIN = 'https://basketball-dimes.herokuapp.com/login/'
+export const GAMES = 'https://basketball-dimes.herokuapp.com/games/'
+export const USERS = "https://basketball-dimes.herokuapp.com/users/"
+export const USER_GAMES = "https://basketball-dimes.herokuapp.com/user_games/"
+export const INVITATIONS = 'https://basketball-dimes.herokuapp.com/invitations/'
+

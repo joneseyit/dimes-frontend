@@ -3,6 +3,7 @@ import { Form, Container, TextArea } from 'semantic-ui-react'
 import * as DateTime from 'react-datetime'
 import { addGame } from '../redux/actions'
 import { connect } from 'react-redux'
+import { GAMES } from '../endpoints'
 
 class CreateGame extends React.Component {
     state = {
@@ -33,7 +34,7 @@ class CreateGame extends React.Component {
             body: JSON.stringify(this.state)
         }
 
-        fetch('http://localhost:3000/games', options)
+        fetch(GAMES, options)
         .then(res => res.json())
         .then(game => {
             this.props.dispatch(addGame(game))

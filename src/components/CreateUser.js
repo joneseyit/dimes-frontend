@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Form, Input, TextArea, Button, Container } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { addUser } from '../redux/actions'
+import { USERS } from '../endpoints'
 
 class CreateUser extends Component{
     state = {
@@ -35,7 +36,7 @@ class CreateUser extends Component{
             method: 'POST',
             body: data
         }
-        fetch('http://localhost:3000/users', options)
+        fetch(USERS, options)
         .then(res => res.json())
         .then(data => {
             console.log(data)
