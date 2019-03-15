@@ -38,7 +38,7 @@ class Profile extends React.Component {
                                     Username: {this.props.user.username}
                                 </Card.Description>
                                 <Card.Description>Member since: {this.props.user.created_at.split('-')[0]}</Card.Description>
-                                {/* <Card.Description>Bio: {this.props.user.bio}</Card.Description> */}
+                                <Card.Description>Bio: {this.props.user.bio}</Card.Description>
                                 </Card.Content>
 
                             </Card>

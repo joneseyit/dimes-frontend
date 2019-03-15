@@ -42,10 +42,10 @@ class CreateUser extends Component{
             if(data.errors){
                 this.setState({ errors: data.errors })
             } else {
-                this.props.dispatch(addUser(data.user))
-                localStorage.setItem('user_id', data.user_id)
                 localStorage.setItem('token', data.token)
-                this.props.history.push('/profile')
+                localStorage.setItem('user_id', data.user_id)
+                this.props.history.push('./profile')
+                this.props.dispatch(addUser(JSON.parse(data.user)))
             }
         })
     }

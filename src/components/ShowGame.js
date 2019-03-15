@@ -39,6 +39,7 @@ class ShowGame extends React.Component {
     }
     
     render() {
+        const moment = require('moment')
         let randNum = Math.floor( Math.random() * 5 )
         return (
             <div>
@@ -53,7 +54,7 @@ class ShowGame extends React.Component {
                         <Card.Content>
                         <Card.Header><div style={{color: 'blue'}}>Title:</div> {this.props.game.title}</Card.Header>
                         <Card.Meta>
-                            <span className='date'>Date: {this.props.game.time}</span>
+                            <span className='date'>Date: {moment(this.props.game.time).format("MMMM-DD-YYYY h:mm a")}</span>
                         </Card.Meta>
                         <Card.Description>Notes: {this.props.game.notes}</Card.Description>
                         <Card.Description>Location: {this.props.game.place}</Card.Description>
