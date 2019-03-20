@@ -29,11 +29,8 @@ import { LOGIN } from '../endpoints'
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ 
-   
-                
                     username: username,
                     password: password
-                
              })
         }
         fetch(LOGIN, options)

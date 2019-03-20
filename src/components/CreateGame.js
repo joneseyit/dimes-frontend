@@ -1,9 +1,10 @@
 import React from 'react'
-import { Form, Container, TextArea } from 'semantic-ui-react'
+import { Form, Container, TextArea, Button, Icon } from 'semantic-ui-react'
 import * as DateTime from 'react-datetime'
 import { addGame } from '../redux/actions'
 import { connect } from 'react-redux'
 import { GAMES } from '../endpoints'
+
 
 class CreateGame extends React.Component {
     state = {
@@ -84,7 +85,11 @@ class CreateGame extends React.Component {
             />
     
             <Form.Field>
-            <input type='submit' />
+            
+            <Button type='submit' animated='fade'>
+                <Button.Content visible>Create Game</Button.Content>
+                <Button.Content hidden><Icon name= 'basketball ball'/></Button.Content>
+            </Button>
             </Form.Field>
         </Form>
 

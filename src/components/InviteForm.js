@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Dropdown, Button } from 'semantic-ui-react'
+import { Form, Dropdown, Button, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { INVITATIONS, USERS } from '../endpoints'
 
@@ -83,7 +83,10 @@ class InviteForm extends React.Component{
                     </Form.Field>
 
                     <Form.Field>
-                        <Button type='submit' value="Dish Invite">Dish Invite </Button>
+                        <Button type='submit' animated='fade'>
+                            <Button.Content visible>Dish Invite</Button.Content>
+                            <Button.Content hidden><Icon name= 'basketball ball'/> </Button.Content> 
+                        </Button>
                     </Form.Field>
                 </Form>
             </div>
