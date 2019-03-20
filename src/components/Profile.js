@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom'
 import InviteForm from './InviteForm'
 import InviteCard from './InviteCard'
 import { allInvites } from '../redux/actions'
-
+import { USERS } from '../endpoints'
 class Profile extends React.Component {
 
     fetchUser = () => {
         let id = parseInt(localStorage.user_id)
-        fetch(`http://localhost:3000/users/${id}`)
+        fetch(`${USERS}${id}`)
         .then(res => res.json())
         .then(user => {
             this.props.dispatch(addUser(user))
