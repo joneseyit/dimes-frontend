@@ -28,11 +28,8 @@ import { Grid, Form, Button, Segment, Header, Message, Image } from "semantic-ui
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ 
-                user: 
-                {
                     username: username,
                     password: password
-                }
              })
         }
         fetch('http://localhost:3000/login', options)
