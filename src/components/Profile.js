@@ -9,6 +9,12 @@ import { allInvites } from '../redux/actions'
 import { USERS } from '../endpoints'
 class Profile extends React.Component {
 
+    // doing it with token
+    // GET localhost:3000/profile, headers: { 'Access-Token': token }
+    // on the rails side:
+    //  def profile
+    //    render json: current_user
+    //  end
     fetchUser = () => {
         let id = parseInt(localStorage.user_id)
         fetch(`${USERS}${id}`)
