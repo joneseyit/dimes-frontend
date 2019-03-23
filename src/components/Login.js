@@ -40,7 +40,7 @@ import { Grid, Form, Button, Segment, Header, Message, Image } from "semantic-ui
                 this.props.history.push("/login")
             } else{
                 localStorage.setItem('token', data.token)
-                localStorage.setItem('user_id', data.user_id)
+                // localStorage.setItem('user_id', data.user_id)
                 this.props.history.push('./profile')
                 this.props.dispatch(addUser(JSON.parse(data.user)))
             }

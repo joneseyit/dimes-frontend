@@ -2,7 +2,7 @@ import React from 'react'
 import { Form, Dropdown, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
-
+let token = localStorage.token
 class InviteForm extends React.Component{
     state = {
         users: [],
@@ -24,6 +24,7 @@ class InviteForm extends React.Component{
         let options = {
             method: 'POST',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ 
@@ -49,7 +50,15 @@ class InviteForm extends React.Component{
     }
 
     fetchUsers = () => {
-        fetch('http://localhost:3000/users')
+        let options = {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        }
+
+        fetch('http://localhost:3000/users', options)
         .then(res => res.json())
         .then(users => (this.setState({ users: users})))
     }

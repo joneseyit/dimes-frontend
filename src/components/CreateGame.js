@@ -10,9 +10,8 @@ class CreateGame extends React.Component {
         place: '',
         notes: '',
         time: new Date(),
-        user_id: localStorage.user_id
-    }
-
+        user_id: this.props.user.id
+    }    
 
 
     handleChange = (e) => {
@@ -24,11 +23,12 @@ class CreateGame extends React.Component {
     }
 
     onSubmitHandler = (e) => {
+        let token = localStorage.token
         let options = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(this.state)
         }
@@ -92,6 +92,9 @@ class CreateGame extends React.Component {
         )
     }
 }
-    
 
-export default connect()(CreateGame)
+const mapStateToProps = ({user}) => {
+    return {user: user}
+}
+
+export default connect(mapStateToProps)(CreateGame)

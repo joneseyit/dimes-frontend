@@ -11,11 +11,13 @@ class ShowGame extends React.Component {
     }
 
     joinGame = () => {
-        let userID = parseInt(localStorage.user_id)
+        let userID = this.props.user.id
         let gameID = this.props.game.id
+        let token = localStorage.token
         const options = {
             method: 'POST',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -88,8 +90,8 @@ class ShowGame extends React.Component {
 }
 
 
-const mapStateToProps = ({game}) => {
-    return { game: game }
+const mapStateToProps = ({game, user}) => {
+    return { game: game, user: user}
 }
 
 export default connect(mapStateToProps)(ShowGame)

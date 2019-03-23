@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { responded } from '../redux/actions'
 import { showGame } from '../redux/actions'
 
+let token = localStorage.token
 class InviteCard extends React.Component {
     state = {
         errors: ''
@@ -14,6 +15,7 @@ class InviteCard extends React.Component {
         const options = {
             method: 'POST',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
@@ -39,6 +41,7 @@ class InviteCard extends React.Component {
         let options = {
             method: 'PATCH',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ 
@@ -55,7 +58,7 @@ class InviteCard extends React.Component {
 
     render(){
         const gameId = this.props.invite.game.id
-        const userId = parseInt(localStorage.user_id)
+        const userId = this.props.user.id
         const invitedId = this.props.invite.id
 
         return (

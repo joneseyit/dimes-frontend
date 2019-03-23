@@ -10,8 +10,16 @@ import { allInvites } from '../redux/actions'
 class Profile extends React.Component {
 
     fetchUser = () => {
-        let id = parseInt(localStorage.user_id)
-        fetch(`http://localhost:3000/users/${id}`)
+        let token = localStorage.token
+        let options = {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        }
+        // let id = parseInt(localStorage.user_id)
+        fetch(`http://localhost:3000/users/profile`, options)
         .then(res => res.json())
         .then(user => {
             this.props.dispatch(addUser(user))
