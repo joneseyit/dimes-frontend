@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import InviteForm from './InviteForm'
 import InviteCard from './InviteCard'
 import { allInvites } from '../redux/actions'
-import { USERS } from '../endpoints'
+import { PROFILE } from '../endpoints'
 class Profile extends React.Component {
 
     // doing it with token
@@ -25,7 +25,7 @@ class Profile extends React.Component {
             }
         }
         // let id = parseInt(localStorage.user_id)
-        fetch(`http://localhost:3000/users/profile`, options)
+        fetch(PROFILE, options)
         .then(res => res.json())
         .then(user => {
             this.props.dispatch(addUser(user))

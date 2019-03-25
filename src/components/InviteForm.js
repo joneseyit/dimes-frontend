@@ -60,7 +60,7 @@ class InviteForm extends React.Component{
             }
         }
 
-        fetch('http://localhost:3000/users', options)
+        fetch(USERS, options)
         .then(res => res.json())
         .then(users => (this.props.dispatch(addUsers(users))))
     }
