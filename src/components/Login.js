@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Grid, Form, Button, Segment, Header, Message, Image } from "semantic-ui-react";
-  import { Link } from "react-router-dom";
-  import { connect } from "react-redux";
-  import { addUser } from '../redux/actions'
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { addUser } from '../redux/actions'
+import { LOGIN } from '../endpoints'
   
   
   class Login extends Component {
@@ -32,7 +33,7 @@ import { Grid, Form, Button, Segment, Header, Message, Image } from "semantic-ui
                     password: password
              })
         }
-        fetch('http://localhost:3000/login', options)
+        fetch(LOGIN, options)
         .then(res => res.json())
         .then( data => {
             if(data.errors){

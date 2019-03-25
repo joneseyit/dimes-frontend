@@ -22,6 +22,7 @@ class NavBar extends Component {
           as={ Link } to='/games/all'
           name='Browse All Games'
           onClick={this.handleItemClick}
+          animated='fade'
         >
           Browse All Games
         </Menu.Item>

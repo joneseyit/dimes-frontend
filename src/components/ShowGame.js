@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Images from '../CardImages'
 import { Card, Image, Icon, Container, Button } from 'semantic-ui-react'
 import { showGame } from '../redux/actions'
+import { USER_GAMES } from '../endpoints'
 
 
 class ShowGame extends React.Component {
@@ -29,7 +30,7 @@ class ShowGame extends React.Component {
 
         }
 
-        fetch('http://localhost:3000/user_games', options)
+        fetch(USER_GAMES, options)
         .then(res => res.json())
         .then( game =>{
             if(game.error){

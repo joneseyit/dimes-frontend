@@ -6,9 +6,15 @@ import { Link } from 'react-router-dom'
 import InviteForm from './InviteForm'
 import InviteCard from './InviteCard'
 import { allInvites } from '../redux/actions'
-
+import { USERS } from '../endpoints'
 class Profile extends React.Component {
 
+    // doing it with token
+    // GET localhost:3000/profile, headers: { 'Access-Token': token }
+    // on the rails side:
+    //  def profile
+    //    render json: current_user
+    //  end
     fetchUser = () => {
         let token = localStorage.token
         let options = {
