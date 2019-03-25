@@ -5,6 +5,7 @@ const LOGOUT = 'LOGOUT'
 const ADD_GAME = 'ADD_GAME'
 const ALL_INVITES = 'ALL_INVITES'
 const RESPONDED = 'RESPONDED'
+const ADD_USERS = 'ADD_USERS'
 
 export function fetchedGames(games){
     return { type: FETCHED_GAMES, games: games }
@@ -32,4 +33,8 @@ export function allInvites(invites){
 
 export function responded(invite){
     return { type: RESPONDED, invite: invite}
+}
+
+export function addUsers(users){
+    return { type: ADD_USERS, users: users}
 }

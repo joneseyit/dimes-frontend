@@ -5,13 +5,13 @@ import { connect } from 'react-redux'
 import { responded } from '../redux/actions'
 import { showGame } from '../redux/actions'
 
-let token = localStorage.token
 class InviteCard extends React.Component {
     state = {
         errors: ''
     }
 
     joinGame = (userId, gameId) => {
+        let token = localStorage.token
         const options = {
             method: 'POST',
             headers: {
@@ -38,6 +38,7 @@ class InviteCard extends React.Component {
     }
 
     changeInviteStatus = (e, invitedId, gameId, userId) => {
+        let token = localStorage.token
         let options = {
             method: 'PATCH',
             headers: {

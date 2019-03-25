@@ -1,15 +1,13 @@
 import React from 'react'
 import { Form, Dropdown, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import { addUsers } from '../redux/actions'
 
-let token = localStorage.token
 class InviteForm extends React.Component{
     state = {
-        users: [],
         message: '',
         invitedId: null,
-        gameId: null,
-        dropdownDefault: 'Choose a player'
+        gameId: null 
     }
 
     onChangeHandler = (value, text) => {
@@ -18,6 +16,7 @@ class InviteForm extends React.Component{
 
     submitHandler = (e) => {
         e.preventDefault()
+        let token = localStorage.token
         let invitedId = this.state.invitedId
         let curUserId = this.props.user.id
         let gameId = this.state.gameId
@@ -44,12 +43,13 @@ class InviteForm extends React.Component{
                 this.setState({ message: data.error})
             }
             else {
-                this.setState({ message: "Your invite has been sent!"})
+                this.setState({ message: "Your invite has been sent!" })  
             }
         })
     }
 
     fetchUsers = () => {
+        let token = localStorage.token
         let options = {
             method: 'GET',
             headers: {
@@ -60,7 +60,7 @@ class InviteForm extends React.Component{
 
         fetch('http://localhost:3000/users', options)
         .then(res => res.json())
-        .then(users => (this.setState({ users: users})))
+        .then(users => (this.props.dispatch(addUsers(users))))
     }
 
     componentDidMount() {
@@ -69,7 +69,8 @@ class InviteForm extends React.Component{
     
     render() {
         //map over and convert users to the format to be put into the dropdown
-        let users = this.state.users.map( user => user.invite_format)
+        
+        let users = this.props.users.map( user => user.invite_format)
         //the id gets saved in the value key of the format for the dropdown
         let usersMinusMe = users.filter(user => user.value !== this.props.user.id)
         let games = this.props.user.upcoming_games.map( game => {
@@ -82,7 +83,7 @@ class InviteForm extends React.Component{
                 <Form onSubmit={this.submitHandler}>
                     <Form.Field>
                         <label>Player</label>
-                        <Dropdown placeholder='Which Player' icon='basketball ball' name='invitedId' options={usersMinusMe} onChange={this.onChangeHandler} style={{padding: '5px'}} />
+                        <Dropdown placeholder='Which player' icon='basketball ball' name='invitedId' options={usersMinusMe} onChange={this.onChangeHandler} style={{padding: '5px'}} />
                     </Form.Field>
 
                     <Form.Field>   
@@ -101,7 +102,7 @@ class InviteForm extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    return { user: state.user }
+    return { user: state.user, users: state.users }
 }
 
 export default connect(mapStateToProps)(InviteForm)
